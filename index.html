@@ -1,45 +1,33 @@
 <!doctype html>
 <html ng-app = "myModule">
 	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 		<script type="text/javascript" src = "scripts/script.js"></script>
 	</head>
 	<body >
 		<div ng-controller = "myController">
-			<!-- Example 1 -->
-			<h3>Example 1 : Simple ng-repeat</h3>
-			<table border="0">
+			<table>
 				<thead>
 					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Gender</th>
-						<th>Salary</th>
+						<th>Name</th>
+						<th>Likes</th>
+						<th>Dislikes</th>
+						<th>Likes/Dislikes</th>
 					</tr>
 				</thead>
-			<!-- ng-repeat acts as a foreach loop here -->
 				<tbody>
-					<tr ng-repeat="employee in employees">
-						<td>{{ employee.firstName }}</td>
-						<td>{{ employee.lastName }}</td>
-						<td>{{ employee.gender }}</td>
-						<td>{{ employee.salary }}</td>
+					<tr ng-repeat="technology in technologies">
+						<td>{{ technology.name }}</td>
+						<td>{{ technology.likes }}</td>
+						<td>{{ technology.dislikes }}</td>
+						<td>
+							<input type="button" value="Like" ng-click="incrementLikes(technology)" />
+							<input type="button" value="Disike" ng-click="incrementDislikes(technology)" />
+						</td>
 					</tr>
 				</tbody>
 			</table>
-
-			<!-- Example 2 with nested ng-repeat 
-				 Note: We have also shown index of particular element.
-				 You can use $parent.$index instead of ng-init
-			-->
-			<h3>Example 2 : Nested ng-repeat</h3>
-			<ul>
-				<li ng-repeat="country in countries" ng-init="parentIndex=$index">[{{ $index }}] {{ country.name }}
-					<ul>
-						<li ng-repeat ="city in country.cities">[{{ parentIndex }}.{{ $index }}] {{ city }}</li>
-					</ul>
-				</li>
-			</ul>
 		</div>
 		
 	</body>

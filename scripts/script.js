@@ -1,31 +1,20 @@
 var myApp = angular
 				.module("myModule", [])
 				.controller('myController', function($scope){
-	//Example 1
-	var employees = [
-				{firstName : "Audumbar", lastName : "Nevarekar", gender : "male", salary : "25000"},
-				{firstName : "Anniruddha", lastName : "Lanke", gender : "male", salary : "25000"},
-				{firstName : "Pravin", lastName : "Chavan", gender : "male", salary : "25000"},
-				{firstName : "Rohit", lastName : "Yadav", gender : "male", salary : "25000"},
-				{firstName : "VIshal", lastName : "Bharadwaj", gender : "male", salary : "25000"}
+	var technologies = [
+			{name:"Java", likes: 0, dislikes:0},
+			{name:"C#", likes: 0, dislikes:0},
+			{name:"SQL", likes: 0, dislikes:0},
+			{name:"Angular JS", likes: 0, dislikes:0}
 	];
-	$scope.employees = employees;
 
-	//Example 2: Nested
-	var countries = [
-			{
-				name: "India",
-				cities: [ "Mumbai", "Pune", "Bengaluru" ]
-			},
-			{
-				name: "USA",
-				cities: [ "Washington D.C.", "Texas", "California" ]
-			},
-			{
-				name: "UK",
-				cities: [ "London", "Cardiff", "Birmingham" ]
-			}
-	];
-	$scope.countries = countries;
+	$scope.technologies = technologies;
+	//functions to update likes & dislikes
+	$scope.incrementLikes = function (technology) {
+		technology.likes++;
+	}
+	$scope.incrementDislikes = function (technology) {
+		technology.dislikes++;
+	}
 });
 				
