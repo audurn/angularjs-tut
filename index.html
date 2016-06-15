@@ -6,9 +6,33 @@
 	</head>
 	<body >
 		<div ng-controller = "myController">
-			<div>Country: {{ country.name }}</div>
-			<div>Capital: {{ country.capital }}</div>
-			<div><img ng-src="{{ country.flag }}" alt="{{ country.name +' flag' }}" height="100px" width="160"></div>
+			<table>
+				<tr>
+					<td>First Name</td>
+					<td><input type="text" ng-model="employee.firstName"></td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td><input type="text" ng-model="employee.lastName"></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td><input type="text" ng-model="employee.gender"></td>
+				</tr>
+			</table>
+
+			<!-- Because of ng-model, following data will be changed as we make changes in first table -->
+			<table>
+				<tr>
+					<td>First Name : {{ employee.firstName }}</td>
+				</tr>
+				<tr>
+					<td>Last Name : {{ employee.lastName }}</td>
+				</tr>
+				<tr>
+					<td>Gender : {{ employee.gender }}</td>
+				</tr>
+			</table>
 		</div>
 		
 	</body>
