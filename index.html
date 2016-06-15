@@ -6,9 +6,9 @@
 	</head>
 	<body >
 		<div ng-controller = "myController">
-			<div>First Name: {{ employee.firstName }}</div>
-			<div>Last Name: {{ employee.lastName }}</div>
-			<div>Last Name: {{ employee.gender }}</div>
+			<div>Country: {{ country.name }}</div>
+			<div>Capital: {{ country.capital }}</div>
+			<div><img ng-src="{{ country.flag }}" alt="{{ country.name +' flag' }}" height="100px" width="160"></div>
 		</div>
 		
 	</body>
