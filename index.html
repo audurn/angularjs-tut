@@ -6,33 +6,40 @@
 	</head>
 	<body >
 		<div ng-controller = "myController">
-			<table>
-				<tr>
-					<td>First Name</td>
-					<td><input type="text" ng-model="employee.firstName"></td>
-				</tr>
-				<tr>
-					<td>Last Name</td>
-					<td><input type="text" ng-model="employee.lastName"></td>
-				</tr>
-				<tr>
-					<td>Gender</td>
-					<td><input type="text" ng-model="employee.gender"></td>
-				</tr>
+			<!-- Example 1 -->
+			<h3>Example 1 : Simple ng-repeat</h3>
+			<table border="0">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Gender</th>
+						<th>Salary</th>
+					</tr>
+				</thead>
+			<!-- ng-repeat acts as a foreach loop here -->
+				<tbody>
+					<tr ng-repeat="employee in employees">
+						<td>{{ employee.firstName }}</td>
+						<td>{{ employee.lastName }}</td>
+						<td>{{ employee.gender }}</td>
+						<td>{{ employee.salary }}</td>
+					</tr>
+				</tbody>
 			</table>
 
-			<!-- Because of ng-model, following data will be changed as we make changes in first table -->
-			<table>
-				<tr>
-					<td>First Name : {{ employee.firstName }}</td>
-				</tr>
-				<tr>
-					<td>Last Name : {{ employee.lastName }}</td>
-				</tr>
-				<tr>
-					<td>Gender : {{ employee.gender }}</td>
-				</tr>
-			</table>
+			<!-- Example 2 with nested ng-repeat 
+				 Note: We have also shown index of particular element.
+				 You can use $parent.$index instead of ng-init
+			-->
+			<h3>Example 2 : Nested ng-repeat</h3>
+			<ul>
+				<li ng-repeat="country in countries" ng-init="parentIndex=$index">[{{ $index }}] {{ country.name }}
+					<ul>
+						<li ng-repeat ="city in country.cities">[{{ parentIndex }}.{{ $index }}] {{ city }}</li>
+					</ul>
+				</li>
+			</ul>
 		</div>
 		
 	</body>
