@@ -1,6 +1,11 @@
 var myApp = angular
-				.module("myModule", []);
-myApp.controller('myController', function($scope){
-	$scope.message= "Welcome to Angular JS";
+				.module("myModule", [])
+				.controller('myController', function($scope){
+	var employee = {
+			firstName : "Audumbar",
+			lastName : "Nevarekar",
+			gender : "male"
+	};
+	$scope.employee = employee;
 });
 				
