@@ -4,31 +4,23 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 		<script type="text/javascript" src = "scripts/script.js"></script>
+		<script type="text/javascript" src="scripts/filters.js"></script>
 	</head>
 	<body >
 		<div ng-controller = "myController">
-		<!-- I have removed code related to sorting to keep it simple.
-			 You can remove '.name' from ng-model to search in any column.
-		 -->
-			<input type="text" placeholder="Search name" ng-model="searchText.name" />
-			<input type="text" placeholder="Search city" ng-model="searchText.city" />
-			<input type="checkbox" ng-model="exactMatch" />Exact Match
-			<br/><br/>		
+			<!-- creating a custom filter. Check gender in table -->		
 			<table>
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>Gender</th>
-						<th>Salary</th>
 						<th>City</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="employee in employees | filter: searchText : exactMatch">
+					<tr ng-repeat="employee in employees">
 						<td>{{ employee.name }}</td>
-						<td>{{ employee.gender }}</td>
-						<!-- &#8377; is code for INR -->
-						<td>{{ employee.salary | currency: "&#8377;" :1}}</td>
+						<td>{{ employee.gender | gender}}</td>
 						<td>{{ employee.city }}</td>
 					</tr>
 				</tbody>
