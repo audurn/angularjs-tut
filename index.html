@@ -7,24 +7,26 @@
 	</head>
 	<body >
 		<div ng-controller = "myController">
+			<!-- following input type is just updating value of rowLimit which we are using in limitTo-->
+			Rows to limit: <input type="number" min="0" max="{{ length }}" ng-model="rowLimit" /> <br /><br />
 			<table>
 				<thead>
 					<tr>
 						<th>Name</th>
-						<th>Likes</th>
-						<th>Dislikes</th>
-						<th>Likes/Dislikes</th>
+						<th>Date of Birth</th>
+						<th>Gender</th>
+						<th>Salary (Number)</th>
+						<th>Salary (Currency)</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="technology in technologies">
-						<td>{{ technology.name }}</td>
-						<td>{{ technology.likes }}</td>
-						<td>{{ technology.dislikes }}</td>
-						<td>
-							<input type="button" value="Like" ng-click="incrementLikes(technology)" />
-							<input type="button" value="Disike" ng-click="incrementDislikes(technology)" />
-						</td>
+					<tr ng-repeat="employee in employees | limitTo:rowLimit">
+						<td>{{ employee.name | uppercase }}</td>
+						<td>{{ employee.dob | date: "dd/MMM/yyyy"}}</td>
+						<td>{{ employee.gender | lowercase }}</td>
+						<td>{{ employee.salary | number: 2}}</td>
+						<!-- &#8377; is code for INR -->
+						<td>{{ employee.salary | currency: "&#8377;" :1}}</td>
 					</tr>
 				</tbody>
 			</table>
