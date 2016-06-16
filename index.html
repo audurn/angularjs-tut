@@ -8,23 +8,29 @@
 	</head>
 	<body >
 		<div ng-controller = "myController">
-			<!-- creating a custom filter. Check gender in table -->		
+			<!-- Using ng-hide & ng-show -->	
+			<input type="checkbox" ng-model="hideSalary">Click to hide salary
 			<table>
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>Gender</th>
 						<th>City</th>
+						<th ng-hide="hideSalary">Salary</th>
+						<th ng-show="hideSalary">Salary</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="employee in employees">
+					<tr ng-repeat="employee in employees | filter: searchText : exactMatch">
 						<td>{{ employee.name }}</td>
-						<td>{{ employee.gender | gender}}</td>
+						<td>{{ employee.gender }}</td>
 						<td>{{ employee.city }}</td>
+						<!-- &#8377; is code for INR -->
+						<td ng-hide="hideSalary">{{ employee.salary | currency: "&#8377;" :1}}</td>
+						<td ng-show="hideSalary">####</td>
 					</tr>
 				</tbody>
-			</table>
+</table>
 		</div>
 		
 	</body>
