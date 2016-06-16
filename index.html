@@ -7,24 +7,31 @@
 	</head>
 	<body >
 		<div ng-controller = "myController">
-			<!-- following input type is just updating value of rowLimit which we are using in limitTo-->
-			Rows to limit: <input type="number" min="0" max="{{ length }}" ng-model="rowLimit" /> <br /><br />
+			<!-- following input type is just updating value of rowLimit which we are using in limitTo
+				I have merged chap. 9 & 10 so showing sorting using both methods below
+			-->
+			Rows to limit: <input type="number" min="0" max="{{ length }}" ng-model="rowLimit" /> 
+			Sort by: <select ng-model="sortColumn">
+						 <option value="name">Name</option>
+						 <option value="gender">Gender</option>
+						 <option value="dob">Date of Birth</option>
+						 <option value="salary">Salary </option>
+					</select>
+			<br /><br />
 			<table>
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Date of Birth</th>
-						<th>Gender</th>
-						<th>Salary (Number)</th>
-						<th>Salary (Currency)</th>
+						<th ng-click="sortData('name')">Name<div ng-class="getSortClass('name')"></div></th>
+						<th ng-click="sortData('dob')">Date of Birth<div ng-class="getSortClass('dob')"></div></th>
+						<th ng-click="sortData('gender')">Gender<div ng-class="getSortClass('gender')"></div></th>
+						<th ng-click="sortData('salary')">Salary<div ng-class="getSortClass('salary')"></div></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="employee in employees | limitTo:rowLimit">
+					<tr ng-repeat="employee in employees | limitTo:rowLimit | orderBy: sortColumn: reverseSort ">
 						<td>{{ employee.name | uppercase }}</td>
 						<td>{{ employee.dob | date: "dd/MMM/yyyy"}}</td>
 						<td>{{ employee.gender | lowercase }}</td>
-						<td>{{ employee.salary | number: 2}}</td>
 						<!-- &#8377; is code for INR -->
 						<td>{{ employee.salary | currency: "&#8377;" :1}}</td>
 					</tr>

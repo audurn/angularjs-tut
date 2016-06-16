@@ -11,5 +11,23 @@ var myApp = angular
 	$scope.employees = employees;
 	$scope.length = employees.length;
 	$scope.rowLimit = 3;
+	$scope.sortColumn = "name";
+	$scope.reverseSort = false;
+
+	/*Following function checks if clicked column is same or not.
+	* If it is that means that column is sorted asc, so now it will sort it desc.
+	* Asc(reverse=false) Desc(reverse=true)
+	*/
+	$scope.sortData = function(column) {
+		$scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
+		$scope.sortColumn = column;
+	}
+	/*This method is used to show arrows next to column name*/
+	$scope.getSortClass = function(column) {
+		if ($scope.sortColumn == column) {
+			return $scope.reverseSort? 'arrow-down' : 'arrow-up'
+		}
+		return '';
+	}
 });
 				
