@@ -3,35 +3,15 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-		//<script type="text/javascript" src = "scripts/script.js"></script>
+		<script type="text/javascript" src = "scripts/script.js"></script>
 	</head>
 	<body >
-		<!-- ng-init allows you to evaluate an expression in the current scope  -->
-		<div ng-init='employees = [
-			{name: "Ben", gender: "Male", salary: 55000.72, city: "London" },
-			{name: "Sara", gender: "Female", salary: 61000.45, city: "Paris"},
-			{name: "Mark", gender: "Male", salary: 70000.00, city: "California" },
-			{name: "Pam", gender: "Male", salary: 75000.72, city: "Frankfurt" },
-			{name: "Todd", gender: "Male", salary: 72000.444, city: "Silicon Valley" }
-			]'>
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Gender</th>
-						<th>City</th>
-						<th>Salary</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="employee in employees">
-						<td>{{ employee.name }}</td>
-						<td>{{ employee.gender }}</td>
-						<td>{{ employee.city }}</td>
-						<td>{{ employee.salary | currency}}</td>
-					</tr>
-				</tbody>
-</table>
+		<div ng-controller = "myController">
+			<!-- using ng-include directive
+				Note: You need to put these files on the server to use ng-include.
+			 -->
+			
+			<div ng-include="'views/employeetable.html'"></div>
 		</div>
 		
 	</body>
