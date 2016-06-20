@@ -1,8 +1,8 @@
 # Consuming ASP.Net web service in AngularJS with $http
-This tutorial requires visual Studio. I have used VS 2015.
+<pre>This tutorial requires visual Studio. I have used VS 2015.
 I am using MySql server. So steps are bit different.
 Steps:
-1. Create new ASP.NET web application.
+1. Create new ASP.NET web application. 
 2. From 'Manage NuGet packages', install MySql.Data package.
 3. Create new web service(Refer to 'EmployeeService.asmx.cs' file). Also add 'Employee.cs'.
 4. Edit web.config file. Add ConnectionString item. (refer 'web.config').
@@ -19,4 +19,4 @@ Steps:
    </webServices>                  
 7. Make appropriate changes in view(index.html here.)
 
-That's it. Run your project.
+That's it. Run your project. </pre>
