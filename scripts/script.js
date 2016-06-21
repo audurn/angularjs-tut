@@ -1,18 +1,22 @@
-/// <reference path="angular.js" />
 var myApp = angular
-                .module('myModule', [])
-                .controller('myController', function ($scope, $http, $log) {
-                    var successCallback = function (response) {
-                        $scope.employees = response.data;
-                        $scope.isError = false;
-                    }
-                    var errorCallback = function (reason) {
-                        $scope.error = reason.data;
-                        $scope.isError = true;
-                    }
-                    $http({
-                        method : 'GET',
-                        url: 'EmployeeService.asmx/GetAllEmployees'
-                    })
-                    .then(successCallback, errorCallback);
-            });
+				.module("myModule", [])
+				.controller('myController', function($scope){
+	$scope.transformString = function(input) {
+		if (!input) {
+			return input;
+		}
+
+		var output = "";
+
+		for (var i = 0; i < input.length; i++) {
+			if (i>0 && input[i]==input[i].toUpperCase()) {
+				output = output + " ";
+			}
+
+			output = output + input[i];
+		}
+		$scope.output = output;
+		
+	}
+});
+				
