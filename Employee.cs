@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ConnectToMysql
+namespace MySQLDemo
 {
     public class Employee
     {
