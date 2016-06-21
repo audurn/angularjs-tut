@@ -9,7 +9,8 @@
 </head>
 <body>
     <div ng-controller="myController">
-        <table>
+        <div ng-show="isError"> {{ error }} <br/><br/> </div>
+        <table ng-hide="isError">
             <thead>
                 <th>ID</th>
             <th>Name</th>
